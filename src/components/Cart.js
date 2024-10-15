@@ -1,10 +1,8 @@
 import React from "react";
 import CartProduct from "./CartProduct";
 
+// Objeto Carrinho que retorna uma lista de CartProduct
 const Cart = ({ productList, editQuantity, removeProduct }) => {
-    console.log("lista")
-    console.log(productList);
-
     return (
         <div>
             {productList.length === 0 ? (

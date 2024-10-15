@@ -13,6 +13,7 @@ const products = [
 const App = () => {
   const [cart, setCart] = useState([]);
 
+  // Função para adicionar produtos ao carrinho
   const addToCart = (product) => {
     const updatedCart = [...cart];
     const existingProduct = updatedCart.find(item => item.id === product.id);
@@ -34,14 +35,15 @@ const App = () => {
     setCart(updatedCart);
   };
   
+  // Função para remover um produto específico do carrinho, a partir do seu ID
   const removeFromCart = (id) => {
     const updatedCart = cart.filter((product) => product.id !== id);
     setCart(updatedCart);
   };
 
+  // Função para editar a quantidade de itens de um produto específico do carrinho
   const editQuantity = (id, quantity) => {
     console.log("Editando quantidade");
-    console.log(id);
     const updatedCart = [...cart];
     const existingProduct = updatedCart.find(item => item.id === id);
     existingProduct.quantity = quantity;
@@ -49,6 +51,7 @@ const App = () => {
     setCart(updatedCart.filter(item => item.quantity > 0));
   }
 
+  // Função para calcular o valor total do carrinho a cada vez que o componente foi reiniciado
   const totalPrice = () => {
     return cart.reduce((acc, prodct) => acc + (prodct.price * prodct.quantity),0).toFixed(2);
   }
@@ -59,6 +62,7 @@ const App = () => {
       <div className="row pt-4">
         <div className="col ">
           <div className="row row-cols-auto">
+            {/* Exibe lista dos produtos disponíveis */}
             {products.map(product => (
               <div key={product.id} className="col m-4">
                 <div className="product-info">
@@ -74,6 +78,7 @@ const App = () => {
         <div className="col">
           <h2 className='text-center mb-5'>Carrinho de compras</h2>
           <div>
+            {/* Inicializa e exibe o Carrinho */}
               <Cart 
                 productList={cart}
                 editQuantity={editQuantity}

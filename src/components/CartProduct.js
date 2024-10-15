@@ -3,8 +3,6 @@ import React, {useState} from "react";
 const CartProduct = ({product, editQuantity, removeProduct }) => {
   const [quantity, setQuantity] = useState(product.quantity);
 
-  console.log("product");
-  console.log(product);
   const changeQuantity = (event) => {
     event.preventDefault();
     editQuantity(product.id, quantity);
